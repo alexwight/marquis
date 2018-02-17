@@ -46,20 +46,25 @@ class Site
         if (!$listen) {
             if ($scheme == 'https') {
                 $listen = 443;
-                $this->files->ensureDirExists($this->certificatesPath(), user());
-
-                $this->createCertificate($domain);
-
-                $this->files->putAsUser(
-                    MARQUIS_HOME_PATH.'/Nginx/'.$domain . "-" . $listen . ".conf",
-                    $this->buildSSLNginxProxyServer($domain, $listen, $target, $scheme)
-                );
-                return;
             }
             if ($scheme == 'http') {
                 $listen = 80;
             }
         }
+
+        if ($listen == 443) {
+            $this->files->ensureDirExists($this->certificatesPath(), user());
+
+            $this->createCertificate($domain);
+
+            $this->files->putAsUser(
+                MARQUIS_HOME_PATH.'/Nginx/'.$domain . "-" . $listen . ".conf",
+                $this->buildSSLNginxProxyServer($domain, $listen, $target, $scheme)
+            );
+
+            return;
+        }
+
         $this->files->putAsUser(
             MARQUIS_HOME_PATH.'/Nginx/'.$domain . "-" . $listen . ".conf",
             $this->buildNginxProxyServer($domain, $listen, $target, $scheme)

@@ -20,6 +20,8 @@ Marquis requires macOS and [Homebrew](http://brew.sh/). Before installation, you
 
 ## Usage Examples
 
+```marquis site [subdomain] [target protocol] [destination port] [-- listen port]```
+
 ### HTTP ###
 
 To access target at ```http://localhost:8080```
@@ -37,6 +39,26 @@ To access target at ```https://localhost:8443```
 You can now access at ```https://myapp.test```
 
 SSL Certificate is automatically generated and trusted.  HTTP/2 enabled by default.
+
+## Docker example
+
+```docker pull karthequian/helloworld:latest```
+
+```docker run -p 8001:80/tcp "karthequian/helloworld:latest"```
+
+Site now available at http://127.0.0.1:8001
+
+```$ marquis site howdy http 8001```
+
+Site also now available at http://howdy.test
+
+### SSL Termination
+
+Proxy will handle the SSL termination so can handle https when the backend does not expose it, e.g.
+
+```marquis site howdy http 8001 443```
+
+Site also now available at https://howdy.tests
 
 ## Problems?
 

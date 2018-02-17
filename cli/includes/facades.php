@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Marquis;
+namespace Marquis\Facades;
 
 use Illuminate\Container\Container;
 

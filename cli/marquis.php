@@ -1,9 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-use Marquis\Configuration;
-use Marquis\Nginx;
-use Marquis\DnsMasq;
+use Marquis\Facades\Configuration;
+use Marquis\Facades\Nginx;
+use Marquis\Facades\DnsMasq;
+use Marquis\Facades\Site;
+use Marquis\Facades\Filesystem;
+use Marquis\Facades\CommandLine;
 
 /**
  * Load correct autoloader depending on install location.

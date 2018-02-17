@@ -7,6 +7,8 @@ use Marquis\Facades\DnsMasq;
 use Marquis\Facades\Site;
 use Marquis\Facades\Filesystem;
 use Marquis\Facades\CommandLine;
+use Marquis\Facades\Marquis;
+use Marquis\Facades\Brew;
 
 /**
  * Load correct autoloader depending on install location.

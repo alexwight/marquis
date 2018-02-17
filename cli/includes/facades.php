@@ -56,6 +56,6 @@ class Ngrok extends Facade
 class Site extends Facade
 {
 }
-class Valet extends Facade
+class Marquis extends Facade
 {
 }

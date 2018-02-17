@@ -1,5 +1,10 @@
 #!/usr/bin/env php
 <?php
+
+use Marquis\Configuration;
+use Marquis\Nginx;
+use Marquis\DnsMasq;
+
 /**
  * Load correct autoloader depending on install location.
  */
@@ -18,10 +23,6 @@ Container::setInstance(new Container);
 $version = '1.0.0';
 $app = new Application('Elder Marquis', $version);
 
-if (is_dir(MARQUIS_HOME_PATH)) {
-    Configuration::prune();
-    Site::pruneLinks();
-}
 
 /**
  * Allow Marquis to be run more conveniently by allowing the Node proxy to run password-less sudo.

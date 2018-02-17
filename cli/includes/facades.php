@@ -1,5 +1,8 @@
 <?php
 
+
+namespace Marquis;
+
 use Illuminate\Container\Container;
 
 class Facade

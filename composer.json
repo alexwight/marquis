@@ -1,7 +1,6 @@
 {
     "name": "alexwight/marquis",
     "description": "OSX localhost reverse proxy tool",
-    "type": "project",
     "license": "MIT",
     "authors": [
         {

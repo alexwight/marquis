@@ -1,0 +1,32 @@
+{
+    "name": "alexwight/marquis",
+    "description": "OSX localhost reverse proxy tool",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Wight",
+            "email": "alex@elder.co.uk"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "cli/includes/helpers.php",
+            "cli/includes/facades.php"
+        ],
+        "psr-4": {
+            "Marquis\\": "cli/Marquis/"
+        }
+    },
+    "require": {
+        "php": ">=5.6",
+        "illuminate/container": "~5.1",
+        "mnapoli/silly": "~1.0",
+        "symfony/process": "~2.7|~3.0|~4.0",
+        "nategood/httpful": "~0.2",
+        "tightenco/collect": "^5.3"
+    },
+    "bin": [
+        "marquis"
+    ]
+}

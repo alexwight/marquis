@@ -18,9 +18,11 @@ define('MARQUIS_STATIC_PREFIX', '41c270e4-5535-4daa-b23e-c269744c2f45');
  * @param  string  $output
  * @return void
  */
-function info($output)
-{
-    output('<info>'.$output.'</info>');
+if (! function_exists('info')) {
+    function info($output)
+    {
+        output('<info>'.$output.'</info>');
+    }
 }
 
 /**
@@ -29,9 +31,11 @@ function info($output)
  * @param  string  $output
  * @return void
  */
-function warning($output)
-{
-    output('<fg=red>'.$output.'</>');
+if (! function_exists('warning')) {
+    function warning($output)
+    {
+        output('<fg=red>'.$output.'</>');
+    }
 }
 
 /**
@@ -41,13 +45,15 @@ function warning($output)
  * @param array $rows
  * @return void
  */
-function table(array $headers = [], array $rows = [])
-{
-    $table = new Table(new ConsoleOutput);
+if (! function_exists('table')) {
+    function table(array $headers = [], array $rows = [])
+    {
+        $table = new Table(new ConsoleOutput);
 
-    $table->setHeaders($headers)->setRows($rows);
+        $table->setHeaders($headers)->setRows($rows);
 
-    $table->render();
+        $table->render();
+    }
 }
 
 /**
@@ -56,13 +62,15 @@ function table(array $headers = [], array $rows = [])
  * @param  string  $output
  * @return void
  */
-function output($output)
-{
-    if (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'testing') {
-        return;
-    }
+if (! function_exists('output')) {
+    function output($output)
+    {
+        if (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'testing') {
+            return;
+        }
 
-    (new ConsoleOutput)->writeln($output);
+        (new ConsoleOutput)->writeln($output);
+    }
 }
 
 if (! function_exists('resolve')) {
@@ -85,9 +93,11 @@ if (! function_exists('resolve')) {
  * @param  mixed  $instance
  * @return void
  */
-function swap($class, $instance)
-{
-    Container::getInstance()->instance($class, $instance);
+if (! function_exists('swap')) {
+    function swap($class, $instance)
+    {
+        Container::getInstance()->instance($class, $instance);
+    }
 }
 
 if (! function_exists('retry')) {
@@ -125,10 +135,12 @@ if (! function_exists('retry')) {
  *
  * @return void
  */
-function should_be_sudo()
-{
-    if (! isset($_SERVER['SUDO_USER'])) {
-        throw new Exception('This command must be run with sudo.');
+if (! function_exists('should_be_sudo')) {
+    function should_be_sudo()
+    {
+        if (! isset($_SERVER['SUDO_USER'])) {
+            throw new Exception('This command must be run with sudo.');
+        }
     }
 }
 
@@ -170,11 +182,13 @@ if (! function_exists('ends_with')) {
 /**
  * Get the user
  */
-function user()
-{
-    if (! isset($_SERVER['SUDO_USER'])) {
-        return $_SERVER['USER'];
-    }
+if (! function_exists('user')) {
+    function user()
+    {
+        if (! isset($_SERVER['SUDO_USER'])) {
+            return $_SERVER['USER'];
+        }
 
-    return $_SERVER['SUDO_USER'];
+        return $_SERVER['SUDO_USER'];
+    }
 }
